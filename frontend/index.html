@@ -83,49 +83,63 @@
 
         <div class="earth-container">
 
-            <div class="earth-glow"></div>
+    <div class="earth-space"></div>
 
-            <div class="earth" id="earth">
+    <div class="earth-glow"></div>
 
-                <div class="earth-land land-one"></div>
-                <div class="earth-land land-two"></div>
-                <div class="earth-land land-three"></div>
+    <div class="earth" id="earth">
 
-                <div class="pollution pollution-one"></div>
-                <div class="pollution pollution-two"></div>
+        <div class="earth-ocean"></div>
 
-            </div>
-
-            <div class="earth-shadow"></div>
-
-            <div class="earth-stat">
-                <span class="stat-label">Planet Health</span>
-                <strong id="planet-health">24%</strong>
-            </div>
-
+        <div class="earth-continents">
+            <span class="continent continent-1"></span>
+            <span class="continent continent-2"></span>
+            <span class="continent continent-3"></span>
+            <span class="continent continent-4"></span>
+            <span class="continent continent-5"></span>
+            <span class="continent continent-6"></span>
         </div>
 
+        <div class="earth-clouds"></div>
+
+        <div class="earth-pollution pollution-one"></div>
+        <div class="earth-pollution pollution-two"></div>
+        <div class="earth-pollution pollution-three"></div>
+
+        <div class="earth-light"></div>
+        <div class="earth-shadow"></div>
+
     </div>
+
+    <div class="earth-atmosphere"></div>
+
+    <div class="earth-stat">
+        <span class="stat-label">Planet Health</span>
+        <strong id="planet-health">24%</strong>
+    </div>
+
+    <!-- Digital Waste Control -->
     <div class="digital-waste-control">
-    <p class="waste-label">Digital Waste</p>
 
-    <div class="waste-counter">
-        <strong id="waste-count">100</strong>
-        <span>files</span>
+        <p class="waste-label">Digital Waste</p>
+
+        <div class="waste-counter">
+            <strong id="waste-count">100</strong>
+            <span>files</span>
+        </div>
+
+        <button class="delete-waste-btn" id="delete-waste-btn">
+            <i data-lucide="trash-2"></i>
+            Delete Digital Waste
+        </button>
+
+        <p class="waste-message" id="waste-message">
+            Clean your digital footprint and help the planet.
+        </p>
+
     </div>
 
-    <button class="delete-waste-btn" id="delete-waste-btn">
-        <i data-lucide="trash-2"></i>
-        Delete Digital Waste
-    </button>
-
-    <p class="waste-message" id="waste-message">
-        Clean your digital footprint and help the planet.
-    </p>
 </div>
-</div>
-</section>
-
 
         <!-- Features -->
         <section class="features" id="features">
@@ -258,6 +272,7 @@
     </footer>
 
 
-    <script src="js/main.js"></script>
+    <script src="js/api.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

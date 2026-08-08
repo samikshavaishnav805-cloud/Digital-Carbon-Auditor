@@ -1296,3 +1296,699 @@
     font-size: 10px;
     line-height: 1.4;
 }
+/* =========================================================
+   REALISTIC EARTH VISUALIZATION
+   ========================================================= */
+
+.earth-container {
+    position: relative;
+    width: 520px;
+    max-width: 100%;
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+}
+
+/* Space behind the planet */
+
+.earth-space {
+    position: absolute;
+    width: 620px;
+    height: 620px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 25%,
+            rgba(255,255,255,0.7) 0 1px,
+            transparent 2px),
+        radial-gradient(circle at 75% 30%,
+            rgba(255,255,255,0.55) 0 1px,
+            transparent 2px),
+        radial-gradient(circle at 60% 70%,
+            rgba(255,255,255,0.45) 0 1px,
+            transparent 2px),
+        radial-gradient(circle at 20% 70%,
+            rgba(255,255,255,0.5) 0 1px,
+            transparent 2px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Outer atmospheric glow */
+
+.earth-glow {
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(55, 180, 255, 0.16) 0%,
+        rgba(40, 150, 255, 0.08) 45%,
+        transparent 72%
+    );
+    filter: blur(18px);
+    transition: all 1.5s ease;
+    pointer-events: none;
+}
+
+/* Main planet */
+
+.earth {
+    --health: 24%;
+    --pollution: 0.82;
+    --brightness: 0.68;
+    --saturation: 0.7;
+
+    position: relative;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 34% 27%,
+            rgba(255,255,255,0.18),
+            transparent 16%
+        ),
+        radial-gradient(
+            circle at 42% 42%,
+            #1e83a7 0%,
+            #075579 40%,
+            #022d48 72%,
+            #011522 100%
+        );
+
+    box-shadow:
+        inset -55px -35px 90px rgba(0,0,0,0.9),
+        inset 30px 20px 55px rgba(80,210,255,0.13),
+        0 0 25px rgba(70,190,255,0.45),
+        0 0 75px rgba(30,140,255,0.18);
+
+    filter:
+        brightness(var(--brightness))
+        saturate(var(--saturation));
+
+    transition:
+        filter 1.5s ease,
+        box-shadow 1.5s ease,
+        transform 1.2s ease;
+
+    z-index: 4;
+}
+
+/* Ocean texture */
+
+.earth-ocean {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 25% 30%,
+            rgba(72, 190, 220, 0.45),
+            transparent 24%
+        ),
+        radial-gradient(
+            ellipse at 70% 65%,
+            rgba(0, 70, 120, 0.7),
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 50% 90%,
+            rgba(0, 30, 60, 0.9),
+            transparent 45%
+        );
+
+    mix-blend-mode: screen;
+    opacity: 0.8;
+}
+
+/* Continents */
+
+.earth-continents {
+    position: absolute;
+    inset: 0;
+    filter: blur(0.8px);
+    opacity: 0.9;
+    transition: opacity 1.5s ease;
+}
+
+.continent {
+    position: absolute;
+    display: block;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6d8d46,
+            #315d35 48%,
+            #193d2b
+        );
+
+    box-shadow:
+        inset 8px 5px 12px rgba(175,190,110,0.25),
+        inset -10px -10px 15px rgba(0,0,0,0.4);
+
+    border-radius: 45% 55% 38% 62%;
+}
+
+/* North America */
+
+.continent-1 {
+    width: 135px;
+    height: 105px;
+    left: 60px;
+    top: 65px;
+    transform:
+        rotate(-18deg)
+        skewX(-12deg);
+}
+
+/* South America */
+
+.continent-2 {
+    width: 72px;
+    height: 145px;
+    left: 145px;
+    top: 150px;
+    transform:
+        rotate(18deg)
+        skewX(-8deg);
+}
+
+/* Europe + Asia */
+
+.continent-3 {
+    width: 175px;
+    height: 90px;
+    right: 42px;
+    top: 83px;
+    transform:
+        rotate(12deg)
+        skewX(-10deg);
+}
+
+/* Africa */
+
+.continent-4 {
+    width: 105px;
+    height: 125px;
+    right: 135px;
+    top: 145px;
+    transform:
+        rotate(12deg);
+}
+
+/* Australia */
+
+.continent-5 {
+    width: 72px;
+    height: 50px;
+    right: 55px;
+    bottom: 78px;
+    transform: rotate(12deg);
+}
+
+/* Greenland */
+
+.continent-6 {
+    width: 55px;
+    height: 75px;
+    left: 150px;
+    top: 30px;
+    transform: rotate(20deg);
+    opacity: 0.75;
+}
+
+/* Cloud layer */
+
+.earth-clouds {
+    position: absolute;
+    inset: -5%;
+
+    background:
+        radial-gradient(
+            ellipse at 25% 25%,
+            rgba(255,255,255,0.30) 0 5%,
+            transparent 15%
+        ),
+        radial-gradient(
+            ellipse at 68% 38%,
+            rgba(255,255,255,0.25) 0 6%,
+            transparent 18%
+        ),
+        radial-gradient(
+            ellipse at 40% 70%,
+            rgba(255,255,255,0.2) 0 5%,
+            transparent 17%
+        ),
+        radial-gradient(
+            ellipse at 82% 72%,
+            rgba(255,255,255,0.18) 0 4%,
+            transparent 15%
+        );
+
+    filter: blur(5px);
+    opacity: 0.55;
+    mix-blend-mode: screen;
+
+    animation: cloud-drift 25s linear infinite;
+}
+
+@keyframes cloud-drift {
+    from {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    to {
+        transform: translateX(-10px);
+    }
+}
+
+/* Pollution */
+
+.earth-pollution {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(45, 35, 25, 0.55);
+    filter: blur(15px);
+    opacity: var(--pollution);
+    transition: opacity 1.5s ease;
+    mix-blend-mode: multiply;
+}
+
+.pollution-one {
+    width: 180px;
+    height: 100px;
+    left: 25px;
+    top: 65px;
+}
+
+.pollution-two {
+    width: 130px;
+    height: 150px;
+    right: 40px;
+    bottom: 60px;
+}
+
+.pollution-three {
+    width: 100px;
+    height: 80px;
+    left: 145px;
+    bottom: 40px;
+}
+
+/* Directional sunlight */
+
+.earth-light {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 27% 22%,
+            rgba(255,255,255,0.3),
+            transparent 22%
+        ),
+        linear-gradient(
+            110deg,
+            rgba(255,255,255,0.12),
+            transparent 35%
+        );
+
+    pointer-events: none;
+}
+
+/* Planet shadow */
+
+.earth-shadow {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse at 88% 50%,
+            rgba(0,0,0,0.95) 0%,
+            rgba(0,0,0,0.75) 28%,
+            rgba(0,0,0,0.15) 55%,
+            transparent 72%
+        );
+
+    pointer-events: none;
+}
+
+/* Atmospheric rim */
+
+.earth-atmosphere {
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(80,205,255,0.45);
+
+    box-shadow:
+        0 0 12px rgba(80,205,255,0.65),
+        0 0 35px rgba(30,160,255,0.25),
+        inset 4px 0 12px rgba(80,210,255,0.25);
+
+    pointer-events: none;
+    z-index: 7;
+
+    transition:
+        box-shadow 1.5s ease,
+        border-color 1.5s ease;
+}
+
+/* Planet statistics */
+
+.earth-stat {
+    position: relative;
+    z-index: 10;
+
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.65;
+}
+
+#planet-health {
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    background: linear-gradient(
+        135deg,
+        #8be7ff,
+        #72d88c
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    transition: all 1s ease;
+}
+
+/* =========================================================
+   DIGITAL WASTE CONTROL
+   ========================================================= */
+
+.digital-waste-control {
+    position: relative;
+    z-index: 20;
+
+    width: 100%;
+    margin-top: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.waste-label {
+    margin: 0 0 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    opacity: 0.6;
+}
+
+.waste-counter {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 7px;
+
+    margin-bottom: 14px;
+}
+
+.waste-counter strong {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.waste-counter span {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.delete-waste-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 13px 22px;
+
+    border: 1px solid rgba(125,220,160,0.45);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(70,190,110,0.95),
+            rgba(30,135,80,0.95)
+        );
+
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(35,150,80,0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.delete-waste-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(35,170,90,0.35);
+}
+
+.delete-waste-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.delete-waste-btn svg {
+    width: 17px;
+    height: 17px;
+}
+
+.waste-message {
+    max-width: 280px;
+    margin: 12px auto 0;
+
+    font-size: 0.78rem;
+    line-height: 1.5;
+
+    opacity: 0.6;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+/* Cleanup pulse */
+
+.earth-cleaning {
+    animation: earth-cleaning 0.9s ease;
+}
+
+@keyframes earth-cleaning {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.025);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* =========================================================
+   HEALTH STATES
+   ========================================================= */
+
+.earth.health-medium {
+    box-shadow:
+        inset -45px -30px 75px rgba(0,0,0,0.7),
+        inset 25px 20px 50px rgba(70,220,160,0.18),
+        0 0 30px rgba(60,200,180,0.45),
+        0 0 85px rgba(30,180,150,0.2);
+}
+
+.earth.health-high {
+    box-shadow:
+        inset -35px -25px 70px rgba(0,0,0,0.6),
+        inset 25px 20px 55px rgba(90,230,180,0.2),
+        0 0 35px rgba(70,220,180,0.55),
+        0 0 100px rgba(50,200,150,0.25);
+}
+
+.earth.health-perfect {
+    box-shadow:
+        inset -30px -20px 65px rgba(0,0,0,0.5),
+        inset 30px 20px 60px rgba(100,240,190,0.22),
+        0 0 40px rgba(90,230,190,0.7),
+        0 0 120px rgba(60,220,170,0.35);
+}
+
+.earth.health-high .earth-pollution,
+.earth.health-perfect .earth-pollution {
+    opacity: 0.08;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .earth-container {
+        width: 100%;
+        min-height: 590px;
+    }
+
+    .earth {
+        width: 340px;
+        height: 340px;
+    }
+
+    .earth-atmosphere {
+        width: 350px;
+        height: 350px;
+    }
+
+    .earth-glow {
+        width: 400px;
+        height: 400px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .earth-container {
+        min-height: 500px;
+        padding-top: 10px;
+    }
+
+    .earth {
+        width: 280px;
+        height: 280px;
+    }
+
+    .earth-atmosphere {
+        width: 290px;
+        height: 290px;
+        top: 5px;
+    }
+
+    .earth-glow {
+        width: 330px;
+        height: 330px;
+        top: -10px;
+    }
+
+    .earth-space {
+        width: 360px;
+        height: 360px;
+    }
+
+    .earth-stat {
+        margin-top: 15px;
+    }
+
+    #planet-health {
+        font-size: 1.5rem;
+    }
+
+    .digital-waste-control {
+        margin-top: 18px;
+    }
+
+    .delete-waste-btn {
+        width: auto;
+        max-width: 90%;
+    }
+
+    .continent-1 {
+        width: 100px;
+        height: 78px;
+        left: 45px;
+        top: 48px;
+    }
+
+    .continent-2 {
+        width: 55px;
+        height: 108px;
+        left: 108px;
+        top: 110px;
+    }
+
+    .continent-3 {
+        width: 130px;
+        height: 68px;
+        right: 30px;
+        top: 62px;
+    }
+
+    .continent-4 {
+        width: 80px;
+        height: 95px;
+        right: 100px;
+        top: 108px;
+    }
+
+    .continent-5 {
+        width: 55px;
+        height: 38px;
+        right: 40px;
+        bottom: 55px;
+    }
+
+    .continent-6 {
+        width: 42px;
+        height: 55px;
+        left: 110px;
+        top: 23px;
+    }
+}

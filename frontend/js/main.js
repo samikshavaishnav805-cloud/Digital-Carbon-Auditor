@@ -1,136 +1,338 @@
-const earth = document.getElementById("earth");
-const planetHealth = document.getElementById("planet-health");
+document.addEventListener("DOMContentLoaded", () => {
 
-const wasteCount = document.getElementById("waste-count");
-const deleteButton = document.getElementById("delete-waste-btn");
-const wasteMessage = document.getElementById("waste-message");
+    /* =====================================================
+       LUCIDE ICONS
+       ===================================================== */
 
-let health = 24;
-let digitalWaste = 100;
-
-function updatePlanet() {
-    if (!earth) return;
-
-    const healthProgress = health / 100;
-
-    // Update percentage
-    if (planetHealth) {
-        planetHealth.textContent = `${health}%`;
+    if (typeof lucide !== "undefined") {
+        lucide.createIcons();
     }
 
-    // Update waste count
-    if (wasteCount) {
-        wasteCount.textContent = digitalWaste;
+
+    /* =====================================================
+       EARTH + DIGITAL WASTE
+       ===================================================== */
+
+    const earth = document.getElementById("earth");
+    const planetHealth = document.getElementById("planet-health");
+    const wasteCount = document.getElementById("waste-count");
+    const deleteWasteBtn = document.getElementById("delete-waste-btn");
+    const wasteMessage = document.getElementById("waste-message");
+
+    let remainingWaste = 100;
+
+
+    function calculatePlanetHealth() {
+
+        /*
+         * Initial state:
+         * 100 files = 24% planet health
+         *
+         * Final state:
+         * 0 files = 100% planet health
+         */
+
+        const health =
+            24 + ((100 - remainingWaste) * 76) / 100;
+
+        return Math.round(
+            Math.min(100, Math.max(24, health))
+        );
     }
 
-    // Send health value to CSS
-    earth.style.setProperty("--health", healthProgress);
 
-    // Make land greener
-    const lands = document.querySelectorAll(".earth-land");
+    function updateEarth() {
 
-    lands.forEach((land) => {
-        land.style.filter = `
-            saturate(${0.3 + healthProgress * 1.5})
-            brightness(${0.5 + healthProgress * 0.7})
-        `;
-    });
+        if (!earth) return;
 
-    // Remove pollution
-    const pollution = document.querySelectorAll(".pollution");
+        const health = calculatePlanetHealth();
 
-    pollution.forEach((item, index) => {
-        const opacity = Math.max(
-            0,
-            1 - healthProgress * 1.4 - index * 0.15
+        /* ---------------------------------------------
+           Update numbers
+        --------------------------------------------- */
+
+        if (planetHealth) {
+            planetHealth.textContent = `${health}%`;
+        }
+
+        if (wasteCount) {
+            wasteCount.textContent = remainingWaste;
+        }
+
+
+        /* ---------------------------------------------
+           Calculate visual state
+        --------------------------------------------- */
+
+        const pollution =
+            0.82 - (health / 100) * 0.76;
+
+        const brightness =
+            0.68 + (health / 100) * 0.34;
+
+        const saturation =
+            0.70 + (health / 100) * 0.65;
+
+
+        earth.style.setProperty(
+            "--pollution",
+            Math.max(0.05, pollution)
         );
 
-        item.style.opacity = opacity;
+        earth.style.setProperty(
+            "--brightness",
+            brightness
+        );
 
-        if (healthProgress > 0.65) {
-            item.style.transform = "scale(0.5)";
+        earth.style.setProperty(
+            "--saturation",
+            saturation
+        );
+
+
+        /* ---------------------------------------------
+           Remove previous health states
+        --------------------------------------------- */
+
+        earth.classList.remove(
+            "health-medium",
+            "health-high",
+            "health-perfect"
+        );
+
+
+        /* ---------------------------------------------
+           Add current health state
+        --------------------------------------------- */
+
+        if (health >= 90) {
+
+            earth.classList.add("health-perfect");
+
+        } else if (health >= 65) {
+
+            earth.classList.add("health-high");
+
+        } else if (health >= 45) {
+
+            earth.classList.add("health-medium");
         }
 
-        if (healthProgress > 0.85) {
-            item.style.transform = "scale(0)";
+
+        /* ---------------------------------------------
+           Atmospheric glow
+        --------------------------------------------- */
+
+        const atmosphere =
+            document.querySelector(".earth-atmosphere");
+
+        const glow =
+            document.querySelector(".earth-glow");
+
+
+        if (atmosphere) {
+
+            const glowStrength =
+                0.2 + (health / 100) * 0.7;
+
+            atmosphere.style.boxShadow = `
+                0 0 12px rgba(
+                    80,
+                    205,
+                    255,
+                    ${glowStrength}
+                ),
+                0 0 35px rgba(
+                    30,
+                    160,
+                    255,
+                    ${glowStrength * 0.5}
+                ),
+                inset 4px 0 12px
+                rgba(80, 210, 255, 0.25)
+            `;
         }
-    });
 
-    // Change Earth itself
-    earth.style.background = `
-        radial-gradient(
-            circle at 35% 30%,
-            rgba(80, ${90 + healthProgress * 120}, 80, 0.8),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 50% 50%,
-            rgb(
-                ${20 - healthProgress * 8},
-                ${35 + healthProgress * 45},
-                ${28 + healthProgress * 20}
-            ),
-            #050907 75%
-        )
-    `;
 
-    // Change glow
-    const glow = document.querySelector(".earth-glow");
+        if (glow) {
 
-    if (glow) {
-        glow.style.opacity = 0.2 + healthProgress * 0.8;
-        glow.style.transform =
-            `scale(${0.9 + healthProgress * 0.15})`;
-    }
-}
+            const glowOpacity =
+                0.08 + (health / 100) * 0.25;
 
-function deleteDigitalWaste() {
+            glow.style.background = `
+                radial-gradient(
+                    circle,
+                    rgba(
+                        55,
+                        210,
+                        150,
+                        ${glowOpacity}
+                    ) 0%,
 
-    if (digitalWaste <= 0) {
-        return;
-    }
+                    rgba(
+                        40,
+                        150,
+                        255,
+                        0.08
+                    ) 45%,
 
-    digitalWaste -= 10;
-    health += 5;
+                    transparent 72%
+                )
+            `;
+        }
 
-    if (digitalWaste < 0) {
-        digitalWaste = 0;
-    }
 
-    if (health > 100) {
-        health = 100;
-    }
-
-    updatePlanet();
-
-    if (health >= 100) {
+        /* ---------------------------------------------
+           Update message
+        --------------------------------------------- */
 
         if (wasteMessage) {
-            wasteMessage.textContent =
-                "The planet is completely clean. 🌍✨";
-        }
 
-        if (deleteButton) {
-            deleteButton.disabled = true;
-            deleteButton.innerHTML =
-                "✓ Planet Clean";
+            if (remainingWaste === 0) {
+
+                wasteMessage.textContent =
+                    "Your digital space is clean. The planet is healthier. 🌍";
+
+            } else if (health >= 75) {
+
+                wasteMessage.textContent =
+                    "Amazing progress. Your digital footprint is getting cleaner.";
+
+            } else if (health >= 50) {
+
+                wasteMessage.textContent =
+                    "Great work. Keep cleaning your digital footprint.";
+
+            } else {
+
+                wasteMessage.textContent =
+                    "Clean your digital footprint and help the planet.";
+            }
         }
+    }
+
+
+    /* =====================================================
+       EARTH CLEANING ANIMATION
+       ===================================================== */
+
+    function animateEarth() {
+
+        if (!earth) return;
+
+        earth.classList.remove("earth-cleaning");
+
+        /*
+         * Force browser reflow so the animation
+         * can restart every time the button is clicked.
+         */
+
+        void earth.offsetWidth;
+
+        earth.classList.add("earth-cleaning");
+
+        setTimeout(() => {
+
+            earth.classList.remove("earth-cleaning");
+
+        }, 900);
+    }
+
+
+    /* =====================================================
+       DELETE DIGITAL WASTE
+       ===================================================== */
+
+    if (deleteWasteBtn) {
+
+        deleteWasteBtn.addEventListener("click", () => {
+
+            if (remainingWaste <= 0) {
+
+                if (wasteMessage) {
+
+                    wasteMessage.textContent =
+                        "All digital waste has already been cleaned. 🌱";
+                }
+
+                return;
+            }
+
+
+            /*
+             * TEMPORARY DEMO BEHAVIOR
+             *
+             * Each click represents 10 deleted files.
+             *
+             * This will later be replaced by the
+             * real file/folder scanner.
+             */
+
+            remainingWaste =
+                Math.max(0, remainingWaste - 10);
+
+
+            /* Animate Earth */
+
+            animateEarth();
+
+
+            /* Update Earth */
+
+            updateEarth();
+
+        });
+    }
+
+
+    /* =====================================================
+       INITIAL EARTH STATE
+       ===================================================== */
+
+    updateEarth();
+
+
+    /* =====================================================
+       BACKEND CONNECTION TEST
+       ===================================================== */
+
+    async function testBackend() {
+
+        try {
+
+            const response =
+                await apiRequest("/api/health");
+
+            console.log(
+                "Backend connected:",
+                response
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Backend connection failed:",
+                error.message
+            );
+        }
+    }
+
+
+    /*
+     * Only test backend if apiRequest exists.
+     * Prevents the frontend from crashing if
+     * api.js hasn't loaded.
+     */
+
+    if (typeof apiRequest === "function") {
+
+        testBackend();
 
     } else {
 
-        if (wasteMessage) {
-            wasteMessage.textContent =
-                "Digital waste removed. The planet is getting healthier. 🌱";
-        }
+        console.warn(
+            "apiRequest is not available. Check that api.js loads before main.js."
+        );
     }
-}
 
-if (deleteButton) {
-    deleteButton.addEventListener(
-        "click",
-        deleteDigitalWaste
-    );
-}
-
-// Initial state
-updatePlanet();
+});
