@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Digital Carbon Auditor</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+
+            <a href="dashboard.html" class="sidebar-logo">
+                🌱
+                <span>Digital Carbon<br>Auditor</span>
+            </a>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a href="calculator.html">
+                    <span>♧</span>
+                    Calculator
+                </a>
+
+                <a href="reports.html">
+                    <span>▤</span>
+                    Reports
+                </a>
+
+                <a href="history.html">
+                    <span>◷</span>
+                    History
+                </a>
+
+                <a href="settings.html">
+                    <span>⚙</span>
+                    Settings
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <button id="logout-btn" class="logout-btn">
+                    ↪ Logout
+                </button>
+            </div>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+
+                <div>
+                    <span class="section-label">OVERVIEW</span>
+                    <h1>Good morning, <span id="user-name">there</span> 🌱</h1>
+                    <p>Here's how your environmental impact is looking.</p>
+                </div>
+
+                <a href="calculator.html" class="btn btn-primary">
+                    + New Audit
+                </a>
+
+            </header>
+
+
+            <section class="dashboard-cards">
+
+                <div class="metric-card">
+                    <div class="metric-top">
+                        <span>Total Emissions</span>
+                        <span class="metric-icon">☁</span>
+                    </div>
+
+                    <strong id="total-emissions">0 kg</strong>
+
+                    <small>
+                        CO₂ equivalent
+                    </small>
+                </div>
+
+
+                <div class="metric-card">
+                    <div class="metric-top">
+                        <span>Carbon Score</span>
+                        <span class="metric-icon">🌿</span>
+                    </div>
+
+                    <strong id="carbon-score">0</strong>
+
+                    <small>
+                        Out of 100
+                    </small>
+                </div>
+
+
+                <div class="metric-card">
+                    <div class="metric-top">
+                        <span>Audits</span>
+                        <span class="metric-icon">📋</span>
+                    </div>
+
+                    <strong id="audit-count">0</strong>
+
+                    <small>
+                        Completed audits
+                    </small>
+                </div>
+
+
+                <div class="metric-card">
+                    <div class="metric-top">
+                        <span>Reduction</span>
+                        <span class="metric-icon">↓</span>
+                    </div>
+
+                    <strong id="reduction-value">0%</strong>
+
+                    <small>
+                        Since first audit
+                    </small>
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-grid">
+
+                <div class="dashboard-panel chart-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Emissions Overview</h2>
+                            <p>Your emissions over time</p>
+                        </div>
+
+                        <select id="chart-period">
+                            <option value="6">Last 6 months</option>
+                            <option value="12">Last year</option>
+                        </select>
+                    </div>
+
+                    <canvas id="emissions-chart"></canvas>
+
+                </div>
+
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Emission Sources</h2>
+                            <p>Where your impact comes from</p>
+                        </div>
+                    </div>
+
+                    <canvas id="category-chart"></canvas>
+
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-grid lower-grid">
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Recent Audits</h2>
+                            <p>Your latest assessments</p>
+                        </div>
+
+                        <a href="history.html">View all →</a>
+                    </div>
+
+                    <div id="recent-audits" class="audit-list"></div>
+
+                </div>
+
+
+                <div class="dashboard-panel recommendation-panel">
+
+                    <div class="recommendation-icon">
+                        🌱
+                    </div>
+
+                    <span class="section-label">SMART RECOMMENDATION</span>
+
+                    <h2>Reduce unnecessary digital storage</h2>
+
+                    <p>
+                        Removing unused files and reducing redundant
+                        cloud storage can help lower your digital footprint.
+                    </p>
+
+                    <a href="calculator.html" class="btn btn-primary">
+                        Start an Audit
+                    </a>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

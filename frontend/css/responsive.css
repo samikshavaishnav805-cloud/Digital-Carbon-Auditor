@@ -1,0 +1,243 @@
+@media (max-width: 1000px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text {
+        margin: auto;
+    }
+
+    .hero-text > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-grid,
+    .lower-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-grid .dashboard-panel:first-child {
+        grid-column: auto;
+    }
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .dashboard-main {
+        width: calc(100% - 210px);
+        margin-left: 210px;
+        padding: 30px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .nav-actions .btn-outline {
+        display: none;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .earth-container {
+        width: 330px;
+        height: 330px;
+    }
+
+    .earth {
+        width: 250px;
+        height: 250px;
+    }
+
+    .earth-glow {
+        width: 280px;
+        height: 280px;
+    }
+
+    .earth-stat {
+        right: 0;
+        bottom: 15px;
+    }
+
+    .feature-grid,
+    .steps,
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .dashboard-layout {
+        display: block;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .sidebar-logo {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar-bottom {
+        margin-top: 15px;
+    }
+
+    .dashboard-main {
+        width: 100%;
+        margin-left: 0;
+        padding: 25px 18px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-result {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .calculator-result .btn {
+        width: 100%;
+    }
+
+    .report-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================================
+   LANDING PAGE RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero-text {
+        margin: auto;
+    }
+
+    .hero-text > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-badge {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .earth-container {
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero-content {
+        padding-top: 40px;
+        padding-bottom: 50px;
+    }
+
+    .hero-text h1 {
+        font-size: 44px;
+        letter-spacing: -1.5px;
+    }
+
+    .hero-text > p {
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .earth-container {
+        width: 100%;
+    }
+
+    .earth {
+        width: 72%;
+    }
+
+    .earth-stat {
+        right: 2%;
+        bottom: 20%;
+    }
+
+    .digital-waste-control {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+
+        margin: -20px auto 0;
+    }
+}

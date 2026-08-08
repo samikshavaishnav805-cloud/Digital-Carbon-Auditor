@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | Digital Carbon Auditor</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+
+        <a href="index.html" class="auth-logo">
+            🌱 Digital Carbon Auditor
+        </a>
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+                <span class="section-label">GET STARTED</span>
+                <h1>Create your account</h1>
+                <p>Start measuring and reducing your digital carbon footprint.</p>
+            </div>
+
+            <form id="register-form">
+
+                <div class="form-group">
+                    <label for="register-name">Full Name</label>
+                    <input
+                        type="text"
+                        id="register-name"
+                        placeholder="Your name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input
+                        type="email"
+                        id="register-email"
+                        placeholder="you@example.com"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input
+                        type="password"
+                        id="register-password"
+                        placeholder="Minimum 6 characters"
+                        minlength="6"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="register-company">Company / Organization</label>
+                    <input
+                        type="text"
+                        id="register-company"
+                        placeholder="Optional"
+                    >
+                </div>
+
+                <div id="register-message" class="form-message"></div>
+
+                <button type="submit" class="btn btn-primary auth-button">
+                    Create Account
+                </button>
+
+            </form>
+
+            <p class="auth-footer">
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

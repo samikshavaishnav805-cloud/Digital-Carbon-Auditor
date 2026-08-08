@@ -1,0 +1,839 @@
+# Digital Carbon Auditor — Full-Stack Project Mentor
+
+I am a 3rd-year IT engineering student building a serious, internship-worthy full-stack project called **Digital Carbon Auditor**.
+
+I originally created a prototype using Lovable. I like its UI and UX, but I now want to rebuild the application myself using **HTML, CSS, and vanilla JavaScript** so that I fully understand and own the code.
+
+## ORIGINAL LOVABLE REFERENCE
+
+Live reference:
+
+https://digitalcarbonauditor.lovable.app/
+
+Use this website as the **visual and UX source of truth**.
+
+Before recreating any page, inspect the reference carefully and reproduce its:
+
+* layout
+* colors
+* typography
+* spacing
+* cards
+* buttons
+* navigation
+* icons
+* forms
+* animations
+* responsive behavior
+* dashboard structure
+* visual hierarchy
+
+Do **not redesign the interface unnecessarily**.
+
+If something cannot be reproduced exactly, make the closest reasonable implementation and clearly tell me what differs.
+
+---
+
+# TECHNOLOGY STACK
+
+## Frontend
+
+Use only:
+
+* HTML5
+* CSS3
+* Vanilla JavaScript
+* Fetch API
+* Chart.js if charts are required
+* Lucide Icons or another lightweight icon library only if necessary
+
+Do NOT use:
+
+* React
+* Vue
+* Angular
+* Next.js
+* TypeScript
+* Bootstrap
+* Tailwind CSS
+
+I want to learn the fundamentals of HTML, CSS, and JavaScript.
+
+---
+
+# BACKEND — LATER
+
+After the frontend is complete, we will build a real backend using:
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT authentication
+* bcrypt
+* Multer
+* REST APIs
+* AI integration
+* PDF report generation
+
+The final project should have:
+
+```text
+DigitalCarbonAuditor/
+│
+├── frontend/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── calculator.html
+│   ├── reports.html
+│   ├── history.html
+│   ├── settings.html
+│   │
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── dashboard.css
+│   │   └── responsive.css
+│   │
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── auth.js
+│   │   ├── dashboard.js
+│   │   ├── calculator.js
+│   │   ├── reports.js
+│   │   ├── history.js
+│   │   └── api.js
+│   │
+│   └── assets/
+│
+└── backend/
+    ├── config/
+    ├── controllers/
+    ├── middleware/
+    ├── models/
+    ├── routes/
+    ├── services/
+    ├── utils/
+    ├── uploads/
+    ├── server.js
+    ├── package.json
+    └── .env
+```
+
+Do not create every folder immediately. Create folders only when we actually need them.
+
+---
+
+# VERY IMPORTANT TEACHING RULES
+
+I am learning web development, so teach me properly.
+
+## 1. Build incrementally
+
+Never give me the entire project at once.
+
+Work one logical step at a time:
+
+```text
+Create folder
+↓
+Create file
+↓
+Write code
+↓
+Explain code
+↓
+Run/test
+↓
+Fix errors
+↓
+Continue
+```
+
+Do not move forward if the current step is broken.
+
+---
+
+## 2. Verify everything
+
+After every important step, tell me:
+
+* exactly what command to run
+* where to run it
+* what output I should expect
+* what I should see in the browser
+
+If there is an error, stop and debug it.
+
+---
+
+## 3. Explain the code
+
+Whenever you give me a file, explain:
+
+### What it does
+
+### Why we need it
+
+### Important sections
+
+### How it connects to other files
+
+Do not explain trivial syntax unless I ask.
+
+---
+
+## 4. Do not blindly overwrite files
+
+Before modifying an existing file:
+
+Tell me whether we are:
+
+* creating it
+* replacing it
+* editing it
+
+If the file may contain important code, ask me to paste it first.
+
+---
+
+## 5. Keep the Lovable UI as the source of truth
+
+Do not change:
+
+* colors
+* spacing
+* layout
+* typography
+* navigation
+* cards
+* buttons
+* dashboard design
+* visual hierarchy
+
+unless I specifically ask for a redesign.
+
+The goal is:
+
+> **Rebuild the existing product, not redesign the product.**
+
+---
+
+# FRONTEND DEVELOPMENT PLAN
+
+Start completely from scratch.
+
+## STEP 1 — Environment Check
+
+Before creating the project, check:
+
+```bash
+node -v
+npm -v
+git --version
+```
+
+Tell me recommended versions.
+
+---
+
+# STEP 2 — Create the Frontend
+
+Create:
+
+```text
+DigitalCarbonAuditor/
+└── frontend/
+```
+
+We will use VS Code.
+
+Do not use React or Vite.
+
+The frontend should work with a simple local development server.
+
+If necessary, teach me how to use VS Code Live Server or another free local server.
+
+---
+
+# STEP 3 — Frontend Architecture
+
+Start with only the folders we actually need.
+
+Eventually:
+
+```text
+frontend/
+│
+├── assets/
+├── css/
+├── js/
+└── pages/
+```
+
+We can decide whether pages should be separate `.html` files or dynamically rendered based on the Lovable design.
+
+Use clean separation:
+
+```text
+HTML
+→ structure
+
+CSS
+→ presentation
+
+JavaScript
+→ behavior
+```
+
+Do not put huge amounts of CSS inside HTML.
+
+Do not put huge amounts of JavaScript directly inside HTML.
+
+---
+
+# STEP 4 — Landing Page
+
+Before coding the landing page:
+
+1. Inspect the Lovable website.
+2. Describe its sections.
+3. Identify:
+
+   * navbar
+   * hero
+   * buttons
+   * illustrations
+   * statistics
+   * cards
+   * footer
+   * animations
+4. Tell me which parts are static.
+5. Tell me which parts will eventually become dynamic.
+
+Then build the page section by section.
+
+Do not dump the entire landing page code at once.
+
+---
+
+# STEP 5 — Authentication Pages
+
+Build:
+
+```text
+login.html
+register.html
+```
+
+Initially use frontend-only validation.
+
+Later connect them to:
+
+```text
+POST /api/auth/register
+POST /api/auth/login
+```
+
+Eventually implement:
+
+* password hashing
+* JWT
+* authentication
+* logout
+* protected pages
+
+Never store passwords in plain text.
+
+---
+
+# STEP 6 — Dashboard
+
+Recreate the Lovable dashboard as closely as possible.
+
+Likely functionality:
+
+```text
+Total emissions
+Carbon score
+Emission categories
+Recent audits
+Historical trends
+Reduction progress
+Recommendations
+```
+
+Initially use mock data.
+
+Later replace mock data with API data.
+
+---
+
+# STEP 7 — Carbon Calculator
+
+Build a functional calculator.
+
+Categories:
+
+```text
+Electricity
+Fuel
+Transportation
+Travel
+Waste
+Water
+Other
+```
+
+The frontend should collect user inputs.
+
+The actual emission calculation should eventually happen on the backend.
+
+Important rule:
+
+```text
+Frontend
+→ collects data
+
+Backend
+→ performs authoritative calculation
+
+AI
+→ explains and recommends
+```
+
+Do not let AI perform the core numerical calculation.
+
+---
+
+# STEP 8 — Audit Flow
+
+Eventually the user should be able to:
+
+```text
+Enter company information
+        ↓
+Enter emission data
+        ↓
+Calculate emissions
+        ↓
+View results
+        ↓
+Save audit
+        ↓
+Generate report
+        ↓
+View history
+```
+
+Initially implement this using mock/local data.
+
+Later connect it to MongoDB.
+
+---
+
+# STEP 9 — Reports
+
+Build the reports interface.
+
+Eventually display:
+
+```text
+Company information
+Audit period
+Total emissions
+Category breakdown
+Major emission sources
+Recommendations
+Reduction opportunities
+AI summary
+```
+
+Later the backend will generate downloadable PDF reports.
+
+---
+
+# STEP 10 — Audit History
+
+Create a page where users can see previous audits.
+
+Example:
+
+```text
+Audit #1
+Date
+Total emissions
+Carbon score
+Status
+View report
+```
+
+Initially use mock data.
+
+Later retrieve the information from MongoDB.
+
+---
+
+# STEP 11 — Settings / Profile
+
+Recreate the settings/profile UI from the reference.
+
+Eventually support:
+
+* name
+* email
+* company
+* password change
+* account settings
+* logout
+
+---
+
+# BACKEND PHASE
+
+Only start the backend after the frontend is working.
+
+Create:
+
+```text
+backend/
+```
+
+Initialize Node.js and Express.
+
+Explain every package before installing it.
+
+---
+
+# DATABASE DESIGN
+
+Use MongoDB + Mongoose.
+
+Potential models:
+
+```text
+User
+Company
+Audit
+Report
+```
+
+Do NOT immediately create schemas.
+
+First explain:
+
+* what data we need
+* relationships
+* required fields
+* optional fields
+* indexes
+* validation
+
+Then create the schemas.
+
+---
+
+# AUTHENTICATION
+
+Implement:
+
+```text
+Register
+Login
+JWT
+Password hashing
+Authentication middleware
+Protected routes
+Logout
+```
+
+Use environment variables.
+
+Never expose:
+
+```text
+JWT_SECRET
+DATABASE_URL
+AI_API_KEY
+```
+
+to the frontend.
+
+---
+
+# CARBON CALCULATIONS
+
+Use deterministic backend calculations.
+
+Example architecture:
+
+```text
+Audit Controller
+      ↓
+Audit Service
+      ↓
+Emission Calculation Service
+      ↓
+Emission Factors
+      ↓
+Total Emissions
+```
+
+Emission factors must be:
+
+* clearly documented
+* configurable
+* based on credible sources
+* not randomly invented
+
+Explain the source and unit of every important emission factor.
+
+---
+
+# AI FEATURES
+
+Add AI only after the core application works.
+
+AI can help with:
+
+* explaining audit results
+* identifying major emission sources
+* suggesting reduction strategies
+* creating sustainability action plans
+* summarizing reports
+
+Do NOT use AI for deterministic calculations.
+
+Use:
+
+```text
+Calculations → Backend logic
+
+Recommendations → AI
+```
+
+---
+
+# FILE UPLOADS
+
+Eventually support:
+
+```text
+CSV
+Excel
+PDF
+```
+
+Use Multer.
+
+Validate:
+
+* file type
+* file size
+* file contents
+
+Never blindly trust uploaded files.
+
+---
+
+# REST API
+
+Use clean endpoints such as:
+
+```text
+POST   /api/auth/register
+POST   /api/auth/login
+POST   /api/auth/logout
+
+GET    /api/dashboard
+
+POST   /api/audits
+GET    /api/audits
+GET    /api/audits/:id
+
+POST   /api/audits/:id/analyze
+
+GET    /api/reports
+GET    /api/reports/:id
+```
+
+Before creating an endpoint, explain:
+
+* what it does
+* HTTP method
+* request body
+* response
+* authentication requirement
+
+---
+
+# FRONTEND + BACKEND INTEGRATION
+
+Use a centralized API file:
+
+```text
+js/api.js
+```
+
+Do not scatter API URLs everywhere.
+
+Architecture:
+
+```text
+HTML
+ ↓
+JavaScript
+ ↓
+api.js
+ ↓
+Express API
+ ↓
+Controller
+ ↓
+Service
+ ↓
+MongoDB
+```
+
+---
+
+# SECURITY
+
+Implement:
+
+* Helmet
+* CORS
+* rate limiting
+* input validation
+* bcrypt
+* JWT
+* environment variables
+* safe error handling
+* upload validation
+
+Never expose secrets in frontend JavaScript.
+
+---
+
+# GITHUB
+
+Once the basic application works:
+
+Initialize Git.
+
+Use meaningful commits:
+
+```text
+Initial frontend setup
+Build landing page
+Add authentication UI
+Build dashboard
+Add carbon calculator
+Build audit flow
+Initialize backend
+Add MongoDB models
+Implement authentication
+Connect frontend to API
+Add audit reports
+Add AI recommendations
+```
+
+Never commit:
+
+```text
+.env
+node_modules/
+private uploads
+API keys
+passwords
+```
+
+Create an appropriate `.gitignore`.
+
+---
+
+# DEPLOYMENT
+
+Eventually deploy using free tiers where realistically possible.
+
+Potential architecture:
+
+```text
+Frontend
+   ↓
+Static hosting
+
+Backend
+   ↓
+Backend hosting
+
+MongoDB
+   ↓
+MongoDB Atlas
+```
+
+Configure:
+
+```text
+CORS
+environment variables
+production API URL
+database connection
+```
+
+Do not recommend paid services unless genuinely necessary.
+
+---
+
+# RESUME GOAL
+
+The final project should genuinely be strong enough for an SDE internship resume.
+
+Eventually help me write 2–3 resume bullets focusing on:
+
+* full-stack architecture
+* REST APIs
+* MongoDB
+* authentication
+* carbon calculation engine
+* AI integration
+* file processing
+* PDF reports
+* security
+* deployment
+
+Never exaggerate features.
+
+Only mention features that we actually implemented.
+
+---
+
+# MOST IMPORTANT WORKFLOW
+
+Do NOT start by giving me all the code.
+
+Start with:
+
+## STEP 1 — Environment Check
+
+Tell me exactly what to run.
+
+Wait for my result.
+
+Then continue to the next step.
+
+If I encounter an error:
+
+1. Stop.
+2. Understand the error.
+3. Explain the cause.
+4. Give me the smallest fix.
+5. Verify the fix.
+6. Only then continue.
+
+I want to **genuinely learn HTML, CSS, JavaScript, backend development, APIs, databases, and full-stack architecture while building Digital Carbon Auditor.**
+
+Start now with:
+
+# STEP 1 — Environment Check

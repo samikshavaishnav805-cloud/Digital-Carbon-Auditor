@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carbon Calculator | Digital Carbon Auditor</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-logo">
+            🌱
+            <span>Digital Carbon<br>Auditor</span>
+        </a>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <span>▦</span> Dashboard
+            </a>
+
+            <a href="calculator.html" class="active">
+                <span>♧</span> Calculator
+            </a>
+
+            <a href="reports.html">
+                <span>▤</span> Reports
+            </a>
+
+            <a href="history.html">
+                <span>◷</span> History
+            </a>
+
+            <a href="settings.html">
+                <span>⚙</span> Settings
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="logout-btn" class="logout-btn">
+                ↪ Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+
+            <div>
+                <span class="section-label">CARBON AUDIT</span>
+                <h1>Calculate Your Impact</h1>
+                <p>Enter your activity data to create an audit.</p>
+            </div>
+
+        </header>
+
+
+        <form id="calculator-form">
+
+            <div class="calculator-grid">
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Audit Information</h2>
+                            <p>Basic information about this audit</p>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="company-name">Company / Organization</label>
+                            <input
+                                type="text"
+                                id="company-name"
+                                placeholder="Your organization"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="audit-period">Audit Period</label>
+                            <select id="audit-period">
+                                <option value="monthly">Monthly</option>
+                                <option value="quarterly">Quarterly</option>
+                                <option value="yearly">Yearly</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Electricity</h2>
+                            <p>Monthly electricity consumption</p>
+                        </div>
+                    </div>
+
+                    <div class="input-with-unit">
+                        <input type="number" id="electricity" min="0" value="0">
+                        <span>kWh</span>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Fuel</h2>
+                            <p>Fuel consumed during the period</p>
+                        </div>
+                    </div>
+
+                    <div class="input-with-unit">
+                        <input type="number" id="fuel" min="0" value="0">
+                        <span>litres</span>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Transportation</h2>
+                            <p>Business and daily transportation</p>
+                        </div>
+                    </div>
+
+                    <div class="input-with-unit">
+                        <input type="number" id="transportation" min="0" value="0">
+                        <span>km</span>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Air Travel</h2>
+                            <p>Total flight distance</p>
+                        </div>
+                    </div>
+
+                    <div class="input-with-unit">
+                        <input type="number" id="travel" min="0" value="0">
+                        <span>km</span>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Waste</h2>
+                            <p>Waste generated</p>
+                        </div>
+                    </div>
+
+                    <div class="input-with-unit">
+                        <input type="number" id="waste" min="0" value="0">
+                        <span>kg</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="calculator-result">
+
+                <div>
+                    <span>Estimated emissions</span>
+                    <strong id="calculated-emissions">0 kg CO₂e</strong>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">
+                    Calculate & Save Audit
+                </button>
+
+            </div>
+
+            <div id="calculator-message" class="form-message"></div>
+
+        </form>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/calculator.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | Digital Carbon Auditor</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-logo">
+            🌱
+            <span>Digital Carbon<br>Auditor</span>
+        </a>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span>▦</span> Dashboard</a>
+            <a href="calculator.html"><span>♧</span> Calculator</a>
+            <a href="reports.html" class="active"><span>▤</span> Reports</a>
+            <a href="history.html"><span>◷</span> History</a>
+            <a href="settings.html"><span>⚙</span> Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="logout-btn" class="logout-btn">↪ Logout</button>
+        </div>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+            <div>
+                <span class="section-label">REPORTS</span>
+                <h1>Carbon Reports</h1>
+                <p>Review your sustainability performance.</p>
+            </div>
+        </header>
+
+
+        <section class="dashboard-panel">
+
+            <div class="panel-header">
+                <div>
+                    <h2>Latest Audit Report</h2>
+                    <p>Your most recent carbon assessment</p>
+                </div>
+
+                <button id="print-report" class="btn btn-outline">
+                    Print Report
+                </button>
+            </div>
+
+
+            <div id="report-content" class="report-content">
+
+                <div class="report-header">
+                    <div>
+                        <span class="section-label">CARBON AUDIT</span>
+                        <h2 id="report-company">No audit available</h2>
+                    </div>
+
+                    <span class="report-status">Completed</span>
+                </div>
+
+
+                <div class="report-metrics">
+
+                    <div>
+                        <span>Total Emissions</span>
+                        <strong id="report-emissions">0 kg</strong>
+                    </div>
+
+                    <div>
+                        <span>Carbon Score</span>
+                        <strong id="report-score">0/100</strong>
+                    </div>
+
+                    <div>
+                        <span>Audit Period</span>
+                        <strong id="report-period">—</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="report-section">
+
+                    <h3>Major Emission Sources</h3>
+
+                    <div id="report-sources" class="source-list"></div>
+
+                </div>
+
+
+                <div class="report-section">
+
+                    <h3>Recommended Actions</h3>
+
+                    <div class="recommendation-list">
+
+                        <div>
+                            <span>01</span>
+                            Reduce unnecessary electricity consumption.
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            Encourage lower-carbon transportation.
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            Reduce unnecessary digital storage and waste.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/reports.js"></script>
+
+</body>
+</html>

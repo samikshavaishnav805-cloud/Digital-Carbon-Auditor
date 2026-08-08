@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>History | Digital Carbon Auditor</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-logo">
+            🌱
+            <span>Digital Carbon<br>Auditor</span>
+        </a>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span>▦</span> Dashboard</a>
+            <a href="calculator.html"><span>♧</span> Calculator</a>
+            <a href="reports.html"><span>▤</span> Reports</a>
+            <a href="history.html" class="active"><span>◷</span> History</a>
+            <a href="settings.html"><span>⚙</span> Settings</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="logout-btn" class="logout-btn">↪ Logout</button>
+        </div>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <header class="dashboard-header">
+            <div>
+                <span class="section-label">AUDIT HISTORY</span>
+                <h1>Your Audits</h1>
+                <p>Track your environmental performance over time.</p>
+            </div>
+
+            <a href="calculator.html" class="btn btn-primary">
+                + New Audit
+            </a>
+        </header>
+
+
+        <section class="dashboard-panel">
+
+            <div class="panel-header">
+                <div>
+                    <h2>Previous Audits</h2>
+                    <p>All your completed carbon assessments</p>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table class="audit-table">
+
+                    <thead>
+                        <tr>
+                            <th>Audit</th>
+                            <th>Date</th>
+                            <th>Emissions</th>
+                            <th>Score</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="history-table"></tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/history.js"></script>
+
+</body>
+</html>
