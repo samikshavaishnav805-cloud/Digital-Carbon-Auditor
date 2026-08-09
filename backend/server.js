@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet());
 
 app.use(cors({
-    origin: "https://keen-shortbread-710f1e.netlify.app",
+    origin: digitalcarbonauditor.netlify.app,
     credentials: true
 }));
 

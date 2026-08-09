@@ -1,278 +1,637 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Digital Carbon Auditor</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <!-- Optional icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
     <header class="navbar">
+
         <div class="container nav-wrapper">
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo"
+            >
                 <span class="logo-mark">🌱</span>
-                <span>Digital Carbon Auditor</span>
+
+                <span>
+                    Digital Carbon Auditor
+                </span>
             </a>
 
+
             <nav class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#about">About</a>
+
+                <a href="#features">
+                    Features
+                </a>
+
+                <a href="#how-it-works">
+                    How It Works
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
             </nav>
 
+
             <div class="nav-actions">
-                <a href="login.html" class="btn btn-outline">Log In</a>
-                <a href="register.html" class="btn btn-primary">Get Started</a>
+
+                <a
+                    href="login.html"
+                    class="btn btn-outline"
+                >
+                    Log In
+                </a>
+
+                <a
+                    href="register.html"
+                    class="btn btn-primary"
+                >
+                    Get Started
+                </a>
+
             </div>
 
         </div>
+
     </header>
 
 
-    <!-- Hero Section -->
-<section class="hero" id="home">
 
-    <div class="hero-background">
-        <div class="glow glow-one"></div>
-        <div class="glow glow-two"></div>
-    </div>
+    <main>
 
-    <div class="container hero-content">
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
-        <div class="hero-text">
+        <section class="hero">
 
-            <div class="hero-badge">
-                <span>🌍</span>
-                Digital Sustainability
-            </div>
+            <div class="hero-background">
 
-            <h1>
-                Clean Your
-                <span>Digital World.</span>
-                Heal Our Planet.
-            </h1>
+                <div class="glow glow-one"></div>
 
-            <p>
-                Discover how your digital waste impacts the environment,
-                clean what you don't need, and watch your planet recover.
-            </p>
-
-            <div class="hero-actions">
-
-                <a href="register.html" class="btn btn-primary btn-large">
-                    Start Cleaning
-                    <span>→</span>
-                </a>
-
-                <a href="#how-it-works" class="btn btn-outline btn-large">
-                    See How It Works
-                </a>
+                <div class="glow glow-two"></div>
 
             </div>
 
-        </div>
+
+            <div class="container hero-content">
 
 
-        <!-- EARTH VISUAL -->
+                <!-- ================================
+                     HERO TEXT
+                ================================= -->
 
-        <div class="earth-container">
+                <div class="hero-text">
 
-    <div class="earth-space"></div>
+                    <div class="hero-badge">
 
-    <div class="earth-glow"></div>
+                        <span>🌍</span>
 
-    <div class="earth" id="earth">
+                        <span>
+                            Digital Sustainability
+                        </span>
 
-        <div class="earth-ocean"></div>
+                    </div>
 
-        <div class="earth-continents">
-            <span class="continent continent-1"></span>
-            <span class="continent continent-2"></span>
-            <span class="continent continent-3"></span>
-            <span class="continent continent-4"></span>
-            <span class="continent continent-5"></span>
-            <span class="continent continent-6"></span>
-        </div>
 
-        <div class="earth-clouds"></div>
+                    <h1>
 
-        <div class="earth-pollution pollution-one"></div>
-        <div class="earth-pollution pollution-two"></div>
-        <div class="earth-pollution pollution-three"></div>
+                        Clean Your
 
-        <div class="earth-light"></div>
-        <div class="earth-shadow"></div>
+                        <span>
+                            Digital World.
+                        </span>
 
-    </div>
+                        Heal Our Planet.
 
-    <div class="earth-atmosphere"></div>
+                    </h1>
 
-    <div class="earth-stat">
-        <span class="stat-label">Planet Health</span>
-        <strong id="planet-health">24%</strong>
-    </div>
 
-    <!-- Digital Waste Control -->
-    <div class="digital-waste-control">
+                    <p>
 
-        <p class="waste-label">Digital Waste</p>
+                        Discover how your digital waste impacts
+                        the environment, clean what you don't need,
+                        and watch your planet recover.
 
-        <div class="waste-counter">
-            <strong id="waste-count">100</strong>
-            <span>files</span>
-        </div>
+                    </p>
 
-        <button class="delete-waste-btn" id="delete-waste-btn">
-            <i data-lucide="trash-2"></i>
-            Delete Digital Waste
-        </button>
 
-        <p class="waste-message" id="waste-message">
-            Clean your digital footprint and help the planet.
-        </p>
+                    <!-- SCANNER BUTTONS -->
 
-    </div>
+                    <div class="scanner-actions">
 
-</div>
+                        <button
+                            id="choose-folder-btn"
+                            class="scan-btn scan-btn-primary"
+                            type="button"
+                        >
+                            📁 Scan a Folder
+                        </button>
 
-        <!-- Features -->
-        <section class="features" id="features">
+
+                        <button
+                            id="choose-file-btn"
+                            class="scan-btn scan-btn-secondary"
+                            type="button"
+                        >
+                            📄 Scan a File
+                        </button>
+
+                    </div>
+
+
+                    <!-- Hidden file selectors -->
+
+                    <input
+                        type="file"
+                        id="file-picker"
+                        hidden
+                        multiple
+                    >
+
+
+                    <input
+                        type="file"
+                        id="folder-picker"
+                        hidden
+                        webkitdirectory
+                        directory
+                        multiple
+                    >
+
+
+                    <!-- Scanner status -->
+
+                    <div
+                        id="scanner-status"
+                        class="scanner-status"
+                    >
+                        Select a file or folder to begin your
+                        digital waste audit.
+                    </div>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     EARTH VISUAL
+                ========================================= -->
+
+                <div class="earth-container">
+
+                    <!-- Three.js Earth -->
+
+                    <div id="earth-canvas"></div>
+
+
+                    <!-- Planet Health -->
+
+                    <div class="earth-stat">
+
+                        <span class="stat-label">
+                            PLANET HEALTH
+                        </span>
+
+                        <strong id="planet-health">
+                            24%
+                        </strong>
+
+                    </div>
+
+
+                    <!-- Digital Waste -->
+
+                    <div class="digital-waste-control">
+
+                        <p class="waste-label">
+                            DIGITAL WASTE
+                        </p>
+
+
+                        <div class="waste-counter">
+
+                            <strong id="waste-count">
+                                100
+                            </strong>
+
+                            <span>
+                                files
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            id="delete-waste-btn"
+                            class="delete-waste-btn"
+                            type="button"
+                        >
+
+                            <i
+                                data-lucide="trash-2"
+                            ></i>
+
+                            <span>
+                                Delete Digital Waste
+                            </span>
+
+                        </button>
+
+
+                        <p
+                            id="waste-message"
+                            class="waste-message"
+                        >
+                            Clean your digital footprint
+                            and help the planet.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEATURES
+        ================================================== -->
+
+        <section
+            class="features"
+            id="features"
+        >
+
             <div class="container">
 
+
                 <div class="section-heading">
-                    <span>FEATURES</span>
-                    <h2>Everything You Need to Audit Your Impact</h2>
+
+                    <span>
+                        FEATURES
+                    </span>
+
+                    <h2>
+                        Everything You Need to
+                        Audit Your Impact
+                    </h2>
+
                     <p>
-                        Powerful tools to understand your digital carbon
-                        footprint and make smarter sustainability decisions.
+                        Powerful tools to understand your
+                        digital carbon footprint and make
+                        smarter sustainability decisions.
                     </p>
+
                 </div>
+
+
 
                 <div class="feature-grid">
 
-                    <article class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Carbon Calculator</h3>
-                        <p>
-                            Calculate emissions across electricity,
-                            transportation, travel, waste, and more.
-                        </p>
-                    </article>
 
                     <article class="feature-card">
-                        <div class="feature-icon">📈</div>
-                        <h3>Smart Analytics</h3>
+
+                        <div class="feature-icon">
+                            📊
+                        </div>
+
+                        <h3>
+                            Digital Waste Scanner
+                        </h3>
+
                         <p>
-                            Visualize your emissions and understand where
-                            your biggest environmental impacts come from.
+                            Scan files and folders to identify
+                            temporary files, caches, logs,
+                            build files, duplicates and other
+                            potential digital waste.
                         </p>
+
                     </article>
 
+
+
                     <article class="feature-card">
-                        <div class="feature-icon">💡</div>
-                        <h3>Actionable Insights</h3>
+
+                        <div class="feature-icon">
+                            📈
+                        </div>
+
+                        <h3>
+                            Smart Analytics
+                        </h3>
+
                         <p>
-                            Get practical recommendations to reduce your
-                            carbon footprint and improve sustainability.
+                            Understand how much storage your
+                            unnecessary files consume and see
+                            where your digital waste comes from.
                         </p>
+
                     </article>
+
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🌱
+                        </div>
+
+                        <h3>
+                            Planet Recovery
+                        </h3>
+
+                        <p>
+                            Clean selected digital waste and
+                            watch your Planet Health score
+                            improve as your digital footprint
+                            becomes cleaner.
+                        </p>
+
+                    </article>
+
 
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- How It Works -->
-        <section class="how-it-works" id="how-it-works">
+
+        <!-- =================================================
+             HOW IT WORKS
+        ================================================== -->
+
+        <section
+            class="how-it-works"
+            id="how-it-works"
+        >
+
             <div class="container">
 
+
                 <div class="section-heading">
-                    <span>HOW IT WORKS</span>
-                    <h2>Audit Your Carbon Footprint in Simple Steps</h2>
+
+                    <span>
+                        HOW IT WORKS
+                    </span>
+
+                    <h2>
+                        Clean Your Digital Footprint
+                        in Simple Steps
+                    </h2>
+
+                    <p>
+                        Find unnecessary digital files,
+                        review them and clean what you
+                        no longer need.
+                    </p>
+
                 </div>
+
+
 
                 <div class="steps">
 
-                    <div class="step">
-                        <div class="step-number">01</div>
-                        <h3>Enter Your Data</h3>
-                        <p>
-                            Provide information about your energy,
-                            transportation, travel, and other activities.
-                        </p>
-                    </div>
 
                     <div class="step">
-                        <div class="step-number">02</div>
-                        <h3>Calculate Impact</h3>
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Choose a File or Folder
+                        </h3>
+
                         <p>
-                            Our calculation engine processes your data
-                            using documented emission factors.
+                            Select a file or folder from your
+                            computer that you want Digital
+                            Carbon Auditor to inspect.
                         </p>
+
                     </div>
 
+
+
                     <div class="step">
-                        <div class="step-number">03</div>
-                        <h3>Take Action</h3>
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Scan Your Digital Waste
+                        </h3>
+
                         <p>
-                            Review your results and discover opportunities
-                            to reduce your environmental impact.
+                            Our scanner analyzes the selected
+                            files and identifies potential
+                            temporary, duplicate, cache,
+                            build and other unnecessary files.
                         </p>
+
                     </div>
+
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Review and Clean
+                        </h3>
+
+                        <p>
+                            Review the detected digital waste,
+                            choose what you want to remove
+                            and clean your digital footprint.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Watch Earth Recover
+                        </h3>
+
+                        <p>
+                            As you remove digital waste,
+                            your Planet Health score improves
+                            and your 3D Earth becomes healthier.
+                        </p>
+
+                    </div>
+
 
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- About -->
-        <section class="about" id="about">
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <section
+            class="about"
+            id="about"
+        >
+
             <div class="container about-content">
 
-                <div>
-                    <span class="section-label">ABOUT</span>
-                    <h2>Build a More Sustainable Digital Future</h2>
+
+                <div class="about-heading">
+
+                    <span class="section-label">
+                        ABOUT
+                    </span>
+
+                    <h2>
+                        Build a More Sustainable
+                        Digital Future
+                    </h2>
+
                 </div>
 
+
                 <p>
-                    Digital Carbon Auditor helps individuals and
-                    organizations understand the environmental cost of
-                    their activities and turn data into meaningful
-                    sustainability action.
+                    Digital Carbon Auditor helps people
+                    understand and reduce the environmental
+                    impact of their digital footprint by
+                    identifying unnecessary digital waste
+                    and turning cleanup into measurable
+                    environmental progress.
                 </p>
 
+
             </div>
+
         </section>
 
     </main>
 
 
-    <!-- Footer -->
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
     <footer class="footer">
+
         <div class="container footer-content">
 
-            <div class="logo">
-                <span class="logo-mark">🌱</span>
-                <span>Digital Carbon Auditor</span>
-            </div>
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <span class="logo-mark">
+                    🌱
+                </span>
+
+                <span>
+                    Digital Carbon Auditor
+                </span>
+
+            </a>
+
 
             <p>
-                © 2026 Digital Carbon Auditor. Building a greener digital future.
+                © 2026 Digital Carbon Auditor.
+                Building a greener digital future.
             </p>
 
+
         </div>
+
     </footer>
 
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <!-- Three.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.min.js"></script>
+
+
+    <!-- Your Earth -->
+
+    <script src="js/earth.js"></script>
+
+
+    <!-- Existing application files -->
+
     <script src="js/api.js"></script>
-<script src="js/main.js"></script>
+
+    <script src="js/auth.js"></script>
+
+    <script src="js/calculator.js"></script>
+
+    <script src="js/dashboard.js"></script>
+
+    <script src="js/history.js"></script>
+
+    <script src="js/reports.js"></script>
+
+    <script src="js/main.js"></script>
+
+
+    <!-- Initialize Lucide -->
+
+    <script>
+        if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+        }
+    </script>
+
 </body>
+
 </html>
