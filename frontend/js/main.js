@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const response =
-                await apiRequest("/api/health");
+                await apiRequest("/health");
 
             console.log(
                 "Backend connected:",
