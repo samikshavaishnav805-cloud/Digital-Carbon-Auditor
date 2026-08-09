@@ -1,4 +1,6 @@
 require("dotenv").config();
+const authRoutes = require("./routes/auth");
+const scanRoutes = require("./routes/scans");
 
 const express = require("express");
 const cors = require("cors");
@@ -14,13 +16,15 @@ const PORT = process.env.PORT || 5000;
 app.use(helmet());
 
 app.use(cors({
-    origin: digitalcarbonauditor.netlify.app,
+    origin: "https://digitalcarbonauditor.netlify.app",
     credentials: true
 }));
 
 // Request parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/api/auth", authRoutes);
+app.use("/api/scans", scanRoutes);
 
 // Rate limiting
 const limiter = rateLimit({

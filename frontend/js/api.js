@@ -1,18 +1,31 @@
-const API_BASE_URL = "https://digital-carbon-auditor.onrender.com";
+const API_BASE_URL = "http://localhost:5000/api";
 
 async function apiRequest(endpoint, options = {}) {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        headers: {
-            "Content-Type": "application/json",
-            ...(options.headers || {})
-        },
-        ...options
-    });
+    const token = localStorage.getItem("token");
+
+    const headers = {
+        "Content-Type": "application/json",
+        ...(options.headers || {})
+    };
+
+    if (token) {
+        headers.Authorization = `Bearer ${token}`;
+    }
+
+    const response = await fetch(
+        `${API_BASE_URL}${endpoint}`,
+        {
+            ...options,
+            headers
+        }
+    );
 
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.message || "Something went wrong");
+        throw new Error(
+            data.message || "Request failed"
+        );
     }
 
     return data;
